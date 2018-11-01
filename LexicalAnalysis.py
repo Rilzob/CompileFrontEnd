@@ -34,9 +34,9 @@ class Lexer(object):
         if state_before == 0:
             if current_char == ' ':
                 state_now = 0
-            elif current_char.isalpha():
+            elif current_char.isalpha():  # 检查当前字符是否是字母
                 state_now = 1
-            elif current_char.isdigit():
+            elif current_char.isdigit():  # 检查当前字符是否是数字
                 state_now = 2
             elif current_char == ('\'' or '\"'):
                 state_now = 3
@@ -53,7 +53,7 @@ class Lexer(object):
             else:
                 state_now = 6
         elif state_before == 3:
-            if current_char is not '\'' or '\"':
+            if current_char is not ('\'' or '\"'):  # 判断字符串是否到达结尾
                 state_now = state_before
             else:
                 state_now = 7
@@ -83,15 +83,22 @@ class Lexer(object):
         char_list = []
         state_now = 0
         value = 0
-        word = ''
-        string = ''
-        op = ''
-        ST_len = 0
-        KT_len = 0
-        sT_len = 0
-        CT_len = 0
-        PT_len = 0
-        iT_len = 0
+        word = string = op = ''
+        ST_len = KT_len = sT_len = CT_len = PT_len = iT_len = 0
+
+        def solve_state4():
+            nonlocal ST_len, op, state_now, PT_len
+            if self.is_separator(current_char):
+                self.ST.append((current_char, 'ST', ST_len))
+                ST_len += 1
+                state_now = 0
+            elif self.is_operator(current_char):
+                op += current_char
+            else:
+                self.PT.append((op, 'PT', PT_len))
+                PT_len += 1
+                op = ''
+                state_now = 0
 
         for line in self.sourcecode:
             for char in line:
@@ -107,99 +114,47 @@ class Lexer(object):
             else:
                 state_before = state_now
                 state_now = self.state_change(state_before, current_char)
-            # if state_now == 10:
-            #     if state_before == 1:
-            #         state_now = 5
-            #     elif state_before == 2:
-            #         state_now = 6
-            #     elif state_before == 3:
-            #         state_now = 7
-            #     else:
-            #         state_now = 4
+
             if state_now == 1:
                 word += current_char
-                continue
-            if state_now == 2:
+            elif state_now == 2:
                 value = value * 10 + int(current_char)
-                continue
-            if state_now == 3:
+            elif state_now == 3:
                 string += current_char
-                continue
-            if state_now == 4:
-                if self.is_separator(current_char):
-                    self.ST.append((current_char, 'ST', ST_len))
-                    ST_len += 1
-                    state_now = 0
-                    continue
-                if self.is_operator(current_char):
-                    op += current_char
-                    continue
-                else:
-                    self.PT.append((op, 'PT', PT_len))
-                    PT_len += 1
-                    op = ''
-                    state_now = 0
-                    continue
-            if state_now == 5:
-                if self.is_keyword(word):
-                    self.KT.append((word, 'KT', KT_len))
-                    KT_len += 1
-                else:
-                    self.iT.append((word, 'iT', iT_len))
-                    iT_len += 1
-                state_now = self.state_change(0, current_char)
-                word = ''
+            else:
                 if state_now == 4:
-                    if self.is_separator(current_char):
-                        self.ST.append((current_char, 'ST', ST_len))
-                        ST_len += 1
-                        state_now = 0
-                        continue
-                    if self.is_operator(current_char):
-                        op += current_char
-                        state_now = 4
-                        continue
+                    solve_state4()
+                    state_now = self.state_change(0, current_char)
+                if state_now == 5:
+                    if self.is_keyword(word):
+                        self.KT.append((word, 'KT', KT_len))
+                        KT_len += 1
                     else:
-                        self.PT.append((op, 'PT', PT_len))
-                        PT_len += 1
-                        op = ''
-                        state_now = 0
-                        continue
-                continue
-            if state_now == 6:
-                self.CT.append((value, 'CT', CT_len))
-                CT_len += 1
-                state_now = self.state_change(0, current_char)
-                value = 0
-                if state_now == 4:
-                    if self.is_separator(current_char):
-                        self.ST.append((current_char, 'ST', ST_len))
-                        ST_len += 1
-                        state_now = 0
-                        continue
-                    if self.is_operator(current_char):
-                        op += current_char
-                        state_now = 4
-                        continue
-                    else:
-                        self.PT.append((op, 'PT', PT_len))
-                        PT_len += 1
-                        op = ''
-                        state_now = 0
-                        continue
-                continue
-            if state_now == 7:
-                string += current_char
-                self.sT.append((string, 'sT', sT_len))
-                sT_len += 1
-                state_now = 0
-                continue
+                        self.iT.append((word, 'iT', iT_len))
+                        iT_len += 1
+                    state_now = self.state_change(0, current_char)
+                    word = ''
+                    if state_now == 4:
+                        solve_state4()
+                if state_now == 6:
+                    self.CT.append((value, 'CT', CT_len))
+                    CT_len += 1
+                    state_now = self.state_change(0, current_char)
+                    value = 0
+                    if state_now == 4:
+                        solve_state4()
+                if state_now == 7:
+                    string += current_char
+                    self.sT.append((string, 'sT', sT_len))
+                    string = ''
+                    state_now = self.state_change(0, current_char)
+            continue
         print('扫描完成')
 
 
 if __name__ == '__main__':
     Lexer = Lexer()
-    Lexer.load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode.txt')
+    Lexer.load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode1.txt')
     Lexer.lexer_scanner()
     print("iT:")
     for iT in Lexer.iT:
@@ -214,8 +169,8 @@ if __name__ == '__main__':
     for KT in Lexer.KT:
         print(KT)
     print("PT:")
-    for KT in Lexer.KT:
-        print(KT)
+    for PT in Lexer.PT:
+        print(PT)
     print("ST:")
     for ST in Lexer.ST:
         print(ST)
