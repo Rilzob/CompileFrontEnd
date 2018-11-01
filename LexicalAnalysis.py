@@ -30,38 +30,6 @@ class Lexer(object):
         return self.sourcecode
 
     @staticmethod
-    def state_change(state_before, current_char):
-        if state_before == 0:
-            if current_char == ' ':
-                state_now = 0
-            elif current_char.isalpha():  # 检查当前字符是否是字母
-                state_now = 1
-            elif current_char.isdigit():  # 检查当前字符是否是数字
-                state_now = 2
-            elif current_char == ('\'' or '\"'):
-                state_now = 3
-            else:
-                state_now = 4
-        elif state_before == 1:
-            if current_char.isalpha() or current_char.isdigit():
-                state_now = state_before
-            else:
-                state_now = 5
-        elif state_before == 2:
-            if current_char.isdigit():
-                state_now = state_before
-            else:
-                state_now = 6
-        elif state_before == 3:
-            if current_char is not ('\'' or '\"'):  # 判断字符串是否到达结尾
-                state_now = state_before
-            else:
-                state_now = 7
-        else:
-            state_now = 4
-        return state_now
-
-    @staticmethod
     def is_keyword(s):
         return s in KEYWORD_LIST
 
@@ -77,6 +45,49 @@ class Lexer(object):
     def lexical_error(msg):
         print('Lexical error:' + msg)
 
+    @staticmethod
+    def state_change(state_before, current_char):
+        if state_before == 0:
+            if current_char.isalpha():  # 检查当前字符是否是字母
+                state_now = 1
+            elif current_char.isdigit():  # 检查当前字符是否是数字
+                state_now = 2
+            elif current_char == ('\'' or '\"'):
+                state_now = 3
+            elif Lexer.is_separator(current_char):
+                state_now = 4
+            elif Lexer.is_operator(current_char):
+                state_now = 11
+            elif current_char == ' ':
+                state_now = 0
+            else:
+                Lexer.lexical_error(current_char)
+        elif state_before == 1:
+            if current_char.isalpha() or current_char.isdigit():
+                state_now = state_before
+            else:
+                state_now = 5
+        elif state_before == 2:
+            if current_char.isdigit():
+                state_now = state_before
+            elif current_char.isalpha():
+                Lexer.lexical_error(current_char)  # 数字后面紧跟字母报错
+            else:
+                state_now = 6
+        elif state_before == 3:
+            if current_char is not ('\'' or '\"'):  # 判断字符串是否到达结尾
+                state_now = state_before
+            else:
+                state_now = 7
+        elif state_before == 4:
+            state_now = 0
+        elif state_before == 11:
+            if Lexer.is_operator(current_char):
+                state_now = state_before
+            else:
+                state_now = 9
+        return state_now
+
     def lexer_scanner(self):
         if self.sourcecode is None:
             return
@@ -88,33 +99,20 @@ class Lexer(object):
 
         def solve_state4():
             nonlocal ST_len, op, state_now, PT_len
-            if self.is_separator(current_char):
-                self.ST.append((current_char, 'ST', ST_len))
-                ST_len += 1
-                state_now = 0
-            elif self.is_operator(current_char):
-                op += current_char
-            else:
-                self.PT.append((op, 'PT', PT_len))
+            if Lexer.is_separator(current_char):
+                self.PT.append((current_char, 'PT', PT_len))
                 PT_len += 1
-                op = ''
                 state_now = 0
+            elif Lexer.is_operator(current_char):
+                op += current_char
+                state_now = 11
 
         for line in self.sourcecode:
             for char in line:
                 char_list.append(char)
         for current_char in char_list:
-            if current_char == ' ':
-                if state_now == 1:
-                    state_now = 5
-                elif state_now == 2:
-                    state_now = 6
-                elif state_now == 3:
-                    state_now = 7
-            else:
-                state_before = state_now
-                state_now = self.state_change(state_before, current_char)
-
+            state_before = state_now
+            state_now = self.state_change(state_before, current_char)
             if state_now == 1:
                 word += current_char
             elif state_now == 2:
@@ -122,10 +120,13 @@ class Lexer(object):
             elif state_now == 3:
                 string += current_char
             else:
-                if state_now == 4:
-                    solve_state4()
-                    state_now = self.state_change(0, current_char)
-                if state_now == 5:
+                if state_now == 11:
+                    op += current_char
+                elif state_now == 4:
+                    self.PT.append((current_char, 'PT', PT_len))
+                    PT_len += 1
+                    state_now = 0
+                elif state_now == 5:
                     if self.is_keyword(word):
                         self.KT.append((word, 'KT', KT_len))
                         KT_len += 1
@@ -134,20 +135,32 @@ class Lexer(object):
                         iT_len += 1
                     state_now = self.state_change(0, current_char)
                     word = ''
-                    if state_now == 4:
+                    if state_now == (4 or 11):
                         solve_state4()
-                if state_now == 6:
+                    else:
+                        state_now = 0
+                elif state_now == 6:
                     self.CT.append((value, 'CT', CT_len))
                     CT_len += 1
                     state_now = self.state_change(0, current_char)
                     value = 0
-                    if state_now == 4:
+                    if state_now == (4 or 11):
                         solve_state4()
-                if state_now == 7:
+                    else:
+                        state_now = 0
+                elif state_now == 7:
                     string += current_char
                     self.sT.append((string, 'sT', sT_len))
+                    sT_len += 1
                     string = ''
+                    state_now = 0
+                elif state_now == 9:
+                    self.ST.append((op, 'ST', ST_len))
+                    ST_len += 1
+                    op = ''
                     state_now = self.state_change(0, current_char)
+                    if state_now == 3:
+                        string += '\''
             continue
         print('扫描完成')
 
