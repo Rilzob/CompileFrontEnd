@@ -63,7 +63,7 @@ class Lexer(object):
                 state_now = 0
             else:
                 Lexer.lexical_error(current_char)
-                return False
+                return
         elif state_before == 1:
             if current_char.isalpha() or current_char.isdigit():
                 state_now = state_before
@@ -72,6 +72,10 @@ class Lexer(object):
         elif state_before == 2:
             if current_char.isdigit():
                 state_now = state_before
+            elif (not Lexer.is_separator(current_char)) or current_char == ' ':
+                Lexer.lexical_error(current_char)
+                print("缺少界符")
+                return False
             elif current_char.isalpha():
                 Lexer.lexical_error(current_char)  # 数字后面紧跟字母报错
                 print("标识符不能以数字开头")
@@ -92,7 +96,6 @@ class Lexer(object):
                 state_now = 9
         return state_now
 
-    @property
     def lexer_scanner(self):
         if self.sourcecode is None:
             return
@@ -119,10 +122,9 @@ class Lexer(object):
         for current_char in char_list:
             state_before = state_now
             state_now = self.state_change(state_before, current_char)
-            if not state_now:
-                print("代码格式存在错误！")
-                return False
-            if state_now == 1:
+            if not state_now:  # 如果state_change函数返回为False则结束程序
+                return
+            elif state_now == 1:
                 word += current_char
             elif state_now == 2:
                 value = value * 10 + int(current_char)
@@ -159,13 +161,15 @@ class Lexer(object):
                     if state_now == 3:
                         string += '\''
             continue
+        if not Lexer.is_separator(char_list[len(char_list) - 1]):
+            print('程序末尾缺少界符')
         print('扫描完成')
 
 
 if __name__ == '__main__':
     Lexer = Lexer()
     Lexer.load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode1.txt')
-    Lexer.lexer_scanner
+    Lexer.lexer_scanner()
     print("iT:")
     for iT in Lexer.iT:
         print(iT)
