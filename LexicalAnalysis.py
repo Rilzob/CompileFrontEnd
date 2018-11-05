@@ -75,11 +75,11 @@ class Lexer(object):
             elif (not Lexer.is_separator(current_char)) or current_char == ' ':
                 Lexer.lexical_error(current_char)
                 print("缺少界符")
-                return False
+                return -1
             elif current_char.isalpha():
                 Lexer.lexical_error(current_char)  # 数字后面紧跟字母报错
                 print("标识符不能以数字开头")
-                return False
+                return -1
             else:
                 state_now = 6
         elif state_before == 3:
@@ -122,7 +122,7 @@ class Lexer(object):
         for current_char in char_list:
             state_before = state_now
             state_now = self.state_change(state_before, current_char)
-            if not state_now:  # 如果state_change函数返回为False则结束程序
+            if state_now == -1:  # 如果state_change函数返回为False则结束程序
                 return
             elif state_now == 1:
                 word += current_char
@@ -168,7 +168,7 @@ class Lexer(object):
 
 if __name__ == '__main__':
     Lexer = Lexer()
-    Lexer.load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode1.txt')
+    Lexer.load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode.txt')
     Lexer.lexer_scanner()
     print("iT:")
     for iT in Lexer.iT:
