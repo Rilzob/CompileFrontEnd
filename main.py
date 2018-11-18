@@ -2,18 +2,18 @@
 
 # @Author: Rilzob
 # @Time: 2018/11/17 上午9:25
-from LexicalAnalysis2 import Lexer
-from LexicalAnalysis2 import wordlist
 from GrammerticalAnalysis import Grammer
+from GrammerticalAnalysis2 import LLAnalysis
 from utils import load_file
 
 if __name__ == '__main__':
-    Lexer = Lexer()
     Grammer1 = Grammer()
+    Grammer2 = LLAnalysis()
     sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode1.txt')
-    Lexer.lexer_scanner(sourcecode)
-    print("wordlist:", str(wordlist))
+    Grammer1.lexer_scanner(sourcecode)
     Grammer1.grammer_parse()
+    Grammer2.lexer_scanner(sourcecode)
+    Grammer2.grammer_parse()
     # print("标识符：")
     # for i, iT in enumerate(iT):
     #     print("<" + str(i) + "," + str(iT) + ">")

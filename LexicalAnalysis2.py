@@ -2,35 +2,44 @@
 
 # @Author: Rilzob
 # @Time: 2018/10/31 上午9:24
-import codecs
 
 KEYWORD_LIST = ['int', 'float', 'double', 'char', 'main', 'if', 'else', 'continue', 'void', 'while', 'for',
                 'switch', 'case']
 SEPARATOR_LIST = ['{', '}', '(', ')', '[', ']', ';', ':', '.', ',', '?']
 OPERATOR_LIST = ['+', '-', '*', '%', '/', '|', '&', '<', '>', '=', '!']
 
-iT = set()  # 标识符
-CT = set()  # 常数
-sT = set()  # 字符串
-cT = set()  # 字符
-KT = set()  # 关键字
-PT = set()  # 界符
-ST = set()  # 操作符
-wordlist = []
-
 
 class Lexer(object):
+    def __init__(self):
+        self.iT = set()  # 标识符
+        self.CT = set()  # 常数
+        self.sT = set()  # 字符串
+        self.cT = set()  # 字符
+        self.KT = set()  # 关键字
+        self.PT = set()  # 界符
+        self.ST = set()  # 操作符
+        self.wordlist = []
+
     @staticmethod
     def is_keyword(s):
-        return s in KEYWORD_LIST
+        if s in KEYWORD_LIST:
+            return True
+        else:
+            return False
 
     @staticmethod
     def is_separator(s):
-        return s in SEPARATOR_LIST
+        if s in SEPARATOR_LIST:
+            return True
+        else:
+            return False
 
     @staticmethod
     def is_operator(s):
-        return s in OPERATOR_LIST
+        if s in OPERATOR_LIST:
+            return True
+        else:
+            return False
 
     @staticmethod
     def lexical_error(msg):
@@ -99,8 +108,8 @@ class Lexer(object):
             nonlocal op, state_now
             if state_now == 4 or state_now == 11:
                 if Lexer.is_separator(current_char):
-                    PT.add(current_char)
-                    wordlist.append(current_char)
+                    self.PT.add(current_char)
+                    self.wordlist.append(current_char)
                     state_now = 0
                 elif Lexer.is_operator(current_char):
                     op += current_char
@@ -130,33 +139,33 @@ class Lexer(object):
                 if state_now == 11:
                     op += current_char
                 elif state_now == 4:
-                    PT.add(current_char)
-                    wordlist.append(current_char)
+                    self.PT.add(current_char)
+                    self.wordlist.append(current_char)
                     state_now = 0
                 elif state_now == 5:
                     if self.is_keyword(word):
-                        KT.add(word)
+                        self.KT.add(word)
                     else:
-                        iT.add(word)
-                        wordlist.append(word)
+                        self.iT.add(word)
+                        self.wordlist.append(word)
                     state_now = self.state_change(0, current_char)
                     word = ''
                     solve_state4()
                 elif state_now == 6:
-                    CT.add(value)
-                    wordlist.append(value)
+                    self.CT.add(value)
+                    self.wordlist.append(value)
                     state_now = self.state_change(0, current_char)
                     value = 0
                     solve_state4()
                 elif state_now == 7:
                     string += current_char
-                    sT.add(string)
-                    wordlist.append(string)
+                    self.sT.add(string)
+                    self.wordlist.append(string)
                     string = ''
                     state_now = 0
                 elif state_now == 9:
-                    ST.add(op)
-                    wordlist.append(op)
+                    self.ST.add(op)
+                    self.wordlist.append(op)
                     op = ''
                     state_now = self.state_change(0, current_char)
                     if state_now == 3:
@@ -165,8 +174,8 @@ class Lexer(object):
                         value = value * 10 + int(current_char)
                 elif state_now == 12:
                     string += current_char
-                    cT.add(string)
-                    wordlist.append(string)
+                    self.cT.add(string)
+                    self.wordlist.append(string)
                     string = ''
                     state_now = 0
             continue
