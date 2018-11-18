@@ -7,7 +7,8 @@ int main(void)
        a = d;
        d = c;
     }
-    char ch[10]='ok';
+    char ch[10]="ok";
+    (a + b) * 23
     char x,y = 'a';
     c = a + d;
-}
+} "sds" 'c' sdsd 3434 ii
