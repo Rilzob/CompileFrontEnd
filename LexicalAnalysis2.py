@@ -75,6 +75,13 @@ class Lexer(object):
         elif state_before == 2:
             if current_char.isdigit():
                 state_now = state_before
+            elif current_char == '.':
+                state_now = 13
+            else:
+                state_now = 6
+        elif state_before == 13:
+            if current_char.isdigit():
+                state_now = state_before
             else:
                 state_now = 6
         elif state_before == 3:
@@ -103,6 +110,7 @@ class Lexer(object):
         state_now = 0
         value = 0
         word = string = op = ''
+        n = 0.1
 
         def solve_state4():
             nonlocal op, state_now
@@ -135,6 +143,12 @@ class Lexer(object):
                 string += current_char
             elif state_now == 8:
                 string += current_char
+            elif state_now == 13:
+                if current_char == '.':
+                    continue
+                else:
+                    value = n * int(current_char) + value
+                    n *= 0.1
             else:
                 if state_now == 11:
                     op += current_char
@@ -156,6 +170,7 @@ class Lexer(object):
                     self.wordlist.append(value)
                     state_now = self.state_change(0, current_char)
                     value = 0
+                    n = 0.1
                     solve_state4()
                 elif state_now == 7:
                     string += current_char
