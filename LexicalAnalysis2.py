@@ -121,7 +121,6 @@ class Lexer(object):
                     state_now = 0
                 elif Lexer.is_operator(current_char):
                     op += current_char
-                    state_now = 11
             else:
                 state_now = 0
 
@@ -185,8 +184,9 @@ class Lexer(object):
                     state_now = self.state_change(0, current_char)
                     if state_now == 3:
                         string += '\''
-                    if state_now == 2:
+                    elif state_now == 2:
                         value = value * 10 + int(current_char)
+                    solve_state4()
                 elif state_now == 12:
                     string += current_char
                     self.cT.add(string)

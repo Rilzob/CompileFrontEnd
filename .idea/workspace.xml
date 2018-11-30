@@ -2,8 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ca56ce5c-b2a6-42f9-9055-465e3315693d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/LexicalAnalysis2.py" beforeDir="false" afterPath="$PROJECT_DIR$/LexicalAnalysis2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourceCode1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/SourceCode1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -24,13 +23,15 @@
     <session id="986668078">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="7" />
           <entry key="project.open.time.0" value="1" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.12" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -75,7 +76,7 @@
         <entry file="file://$PROJECT_DIR$/SourceCode1.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state>
-              <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
+              <caret column="16" selection-start-column="16" selection-end-column="16" />
             </state>
           </provider>
         </entry>
@@ -92,7 +93,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LexicalAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="246">
+            <state relative-caret-position="4000">
               <caret line="160" column="36" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
               <folding>
                 <marker date="1542517011496" expanded="true" signature="411:643" ph="..." />
@@ -104,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GrammerticalAnalysis.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="600">
-              <caret line="24" column="43" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+            <state relative-caret-position="575">
+              <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
               <folding>
                 <element signature="e#72#106#0" expanded="true" />
                 <marker date="1542543538646" expanded="true" signature="165:270" ph="..." />
@@ -117,11 +118,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/GrammerticalAnalysis2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1420">
-              <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+            <state relative-caret-position="625">
+              <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
               <folding>
                 <marker date="1542548842438" expanded="true" signature="411:417" ph="..." />
-                <marker date="1542548842438" expanded="true" signature="3573:3789" ph="..." />
               </folding>
             </state>
           </provider>
@@ -130,11 +130,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="129">
+            <state relative-caret-position="325">
               <caret line="15" selection-start-line="15" selection-end-line="15" />
-              <folding>
-                <element signature="e#64#104#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -142,7 +139,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/LexicalAnalysis2.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="152">
+            <state relative-caret-position="4250">
               <caret line="170" column="35" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
               <folding>
                 <marker date="1542591143971" expanded="true" signature="397:644" ph="..." />
@@ -222,7 +219,7 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="y" value="23" />
     <option name="width" value="1920" />
     <option name="height" value="731" />
@@ -233,7 +230,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -245,6 +241,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -415,15 +412,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="731" extended-state="0" />
-    <editor active="true" />
+    <frame x="0" y="23" width="1280" height="725" extended-state="6" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.1171459" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11954766" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.20454545" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.20454545" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.44967532" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -433,7 +429,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="11" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.21682848" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.2147541" />
       <window_info anchor="bottom" id="Python Console" order="13" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -508,13 +504,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/LexicalAnalysis3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1237">
-          <caret line="195" column="17" selection-end-line="198" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/LexicalAnalysis3.py" />
     <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.2/python_stubs/227076293/builtins.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="148">
@@ -522,17 +512,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Lexer.py">
+    <entry file="file://$PROJECT_DIR$/Lexer.py" />
+    <entry file="file://$PROJECT_DIR$/SourceCode.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4700">
-          <caret line="188" column="33" lean-forward="true" selection-start-line="188" selection-start-column="33" selection-end-line="188" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/GrammerticalAnalysis2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="55" column="35" lean-forward="true" selection-start-line="55" selection-start-column="35" selection-end-line="55" selection-end-column="35" />
+        <state relative-caret-position="250">
+          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -545,7 +529,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/LexicalAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="246">
+        <state relative-caret-position="4000">
           <caret line="160" column="36" selection-start-line="160" selection-start-column="36" selection-end-line="160" selection-end-column="36" />
           <folding>
             <marker date="1542517011496" expanded="true" signature="411:643" ph="..." />
@@ -555,8 +539,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GrammerticalAnalysis.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="600">
-          <caret line="24" column="43" lean-forward="true" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
+        <state relative-caret-position="575">
+          <caret line="24" column="43" selection-start-line="24" selection-start-column="43" selection-end-line="24" selection-end-column="43" />
           <folding>
             <element signature="e#72#106#0" expanded="true" />
             <marker date="1542543538646" expanded="true" signature="165:270" ph="..." />
@@ -566,25 +550,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/GrammerticalAnalysis2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1420">
-          <caret line="25" column="45" lean-forward="true" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
+        <state relative-caret-position="625">
+          <caret line="25" column="45" selection-start-line="25" selection-start-column="45" selection-end-line="25" selection-end-column="45" />
           <folding>
             <marker date="1542548842438" expanded="true" signature="411:417" ph="..." />
-            <marker date="1542548842438" expanded="true" signature="3573:3789" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/SourceCode.txt">
+    <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="16" selection-start-line="10" selection-start-column="16" selection-end-line="10" selection-end-column="16" />
+        <state relative-caret-position="325">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/LexicalAnalysis2.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="152">
+        <state relative-caret-position="4250">
           <caret line="170" column="35" selection-start-line="170" selection-start-column="35" selection-end-line="170" selection-end-column="35" />
           <folding>
             <marker date="1542591143971" expanded="true" signature="397:644" ph="..." />
@@ -592,20 +575,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="129">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-          <folding>
-            <element signature="e#64#104#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/SourceCode1.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret column="16" lean-forward="true" selection-start-column="16" selection-end-column="16" />
+          <caret column="16" selection-start-column="16" selection-end-column="16" />
         </state>
       </provider>
     </entry>
