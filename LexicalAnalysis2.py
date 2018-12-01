@@ -182,11 +182,20 @@ class Lexer(object):
                     self.wordlist.append(op)
                     op = ''
                     state_now = self.state_change(0, current_char)
-                    if state_now == 3:
+                    if state_now == 4 or state_now == 11:
+                        if Lexer.is_separator(current_char):
+                            self.PT.add(current_char)
+                            self.wordlist.append(current_char)
+                            state_now = 0
+                        elif Lexer.is_operator(current_char):
+                            op += current_char
+                    elif state_now == 3:
                         string += '\''
                     elif state_now == 2:
                         value = value * 10 + int(current_char)
-                    solve_state4()
+                        # solve_state4()
+                    elif state_now == 1:
+                        word += current_char
                 elif state_now == 12:
                     string += current_char
                     self.cT.add(string)

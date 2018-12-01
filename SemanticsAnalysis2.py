@@ -1,18 +1,18 @@
 # encoding:utf-8
 
 # @Author: Rilzob
-# @Time: 2018/11/18 下午5:18
+# @Time: 2018/12/1 上午8:48
 
-# LL(1)分析法
-from LexicalAnalysis2 import Lexer
+from GrammerticalAnalysis2 import LLAnalysis
 
 
-class LLAnalysis(Lexer):
+class LLSemanticAnalysis(LLAnalysis):
     def __init__(self):
         super().__init__()
-        self.stack = [';', 'E']
         self.worditer = iter(self.wordlist)
-        self.word = ''
+        self.SEM = []
+        self.QT = []
+        self.i = 1
 
     def is_i(self, word):  # 标识符
         if (word in self.iT) or (word in self.CT):
@@ -21,7 +21,11 @@ class LLAnalysis(Lexer):
             return False
 
     def Analyzer(self):
-        self.word = next(self.worditer)
+        i = 1
+        if self.word != ';':
+            self.word = next(self.worditer)
+        else:
+            return True
         while self.stack[-1] != ';' or self.word != ';':
             try:
                 currentstr = self.stack.pop()
@@ -33,9 +37,13 @@ class LLAnalysis(Lexer):
                     else:
                         return False
                 elif currentstr == 'E_':
-                    if self.word == '+' or self.word == '-':
+                    if self.word in ['+', '-']:
                         # 产生式2
                         self.stack.append('E_')
+                        if self.word == '+':
+                            self.stack.append('GEQ(+)')
+                        else:
+                            self.stack.append('GEQ(-)')
                         self.stack.append('T')
                         self.stack.append('w1')
                     elif self.word == ')' or self.word == ';':
@@ -55,9 +63,13 @@ class LLAnalysis(Lexer):
                     if self.word in ['+', '-', ')', ';']:
                         # 产生式6
                         continue
-                    elif self.word == '*' or self.word == '/':
+                    elif self.word in ['*', '/']:
                         # 产生式5
                         self.stack.append('T_')
+                        if self.word == '*':
+                            self.stack.append('GEQ(*)')
+                        else:
+                            self.stack.append('GEQ(/)')
                         self.stack.append('F')
                         self.stack.append('w2')
                     else:
@@ -65,6 +77,7 @@ class LLAnalysis(Lexer):
                 elif currentstr == 'F':
                     if self.is_i(self.word):
                         # 产生式7
+                        self.stack.append('PUSH(' + str(self.word) + ')')
                         self.stack.append('i')
                     elif self.word == '(':
                         # 产生式8
@@ -89,24 +102,36 @@ class LLAnalysis(Lexer):
                     else:
                         return False
                 elif currentstr == 'w1':
-                    if self.word == '+' or self.word == '-':
+                    if self.word in ['+', '-']:
                         self.word = next(self.worditer)
                     else:
                         return False
                 elif currentstr == 'w2':
-                    if self.word == '*' or self.word == '/':
+                    if self.word in ['*', '/']:
                         self.word = next(self.worditer)
                     else:
                         return False
+                elif currentstr.startswith('PUSH'):
+                    self.SEM.append(currentstr.lstrip('PUSH(').rstrip(')'))
+                elif currentstr.startswith('GEQ'):
+                    char1 = self.SEM.pop()
+                    char2 = self.SEM.pop()
+                    self.SEM.append('t' + str(i))
+                    self.QT.append('(' + currentstr.lstrip('GEQ(').rstrip(')') + ',' + char2 + ','
+                                   + char1 + ',' + 't' + str(i) + ')')
+                    i += 1
                 else:
                     return False
             except StopIteration:
                 return False
         return True
 
-    def grammer_parse(self):
+    def semantic_parse(self):
+        self.grammer_parse()
         result = self.Analyzer()
         if result:
-            print("LL(1)分析法：该表达式符合算术表达式文法")
+            for QT in self.QT:
+                print(QT)
         else:
             print("LL(1)分析法：该表达式不符合算术表达式文法")
+
