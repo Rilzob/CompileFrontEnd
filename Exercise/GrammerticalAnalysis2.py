@@ -4,7 +4,7 @@
 # @Time: 2018/11/18 下午5:18
 
 # LL(1)分析法
-from LexicalAnalysis2 import Lexer
+from Exercise.LexicalAnalysis2 import Lexer
 
 
 class LLAnalysis(Lexer):

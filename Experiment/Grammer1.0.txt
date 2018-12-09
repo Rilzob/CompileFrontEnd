@@ -1,0 +1,26 @@
+notice: 首字母大写的均为非终结符，剩下的为终结符，id代表标识符
+
+'''
+声明语句
+'''
+Statement -> Type id [ = Constant ] ;
+Constant -> num | string
+Type -> int | float | char
+
+'''
+赋值语句
+'''
+Assignment -> id = Expression ;
+
+'''
+表达式
+'''
+Expression -> ( Expression ) | [ Expression ] operator Expression | Constant
+
+self.iT = set()  # 标识符
+self.CT = set()  # 常数
+self.sT = set()  # 字符串
+self.cT = set()  # 字符
+self.KT = set()  # 关键字
+self.PT = set()  # 界符
+self.ST = set()  # 操作符

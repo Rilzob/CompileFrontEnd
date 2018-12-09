@@ -2,10 +2,10 @@
 
 # @Author: Rilzob
 # @Time: 2018/11/17 上午9:25
-from GrammerticalAnalysis import Grammer
-from GrammerticalAnalysis2 import LLAnalysis
-from SemanticsAnalysis2 import LLSemanticAnalysis
-from SemanticsAnalysis import SemanticAnalysis
+from Exercise.GrammerticalAnalysis import Grammer
+from Exercise.GrammerticalAnalysis2 import LLAnalysis
+from Exercise.SemanticsAnalysis2 import LLSemanticAnalysis
+from Exercise.SemanticsAnalysis import SemanticAnalysis
 from utils import load_file
 
 if __name__ == '__main__':

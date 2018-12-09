@@ -4,7 +4,7 @@
 # @Time: 2018/11/17 上午8:58
 
 # 递归子程序
-from LexicalAnalysis2 import Lexer
+from Exercise.LexicalAnalysis2 import Lexer
 import sys
 
 

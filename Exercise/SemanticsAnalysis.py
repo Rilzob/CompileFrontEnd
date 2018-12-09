@@ -3,7 +3,7 @@
 # @Author: Rilzob
 # @Time: 2018/12/1 上午9:41
 
-from GrammerticalAnalysis import Grammer
+from Exercise.GrammerticalAnalysis import Grammer
 import sys
 
 
@@ -11,13 +11,11 @@ class SemanticAnalysis(Grammer):
     def __init__(self):
         super().__init__()
         self.worditer = iter(self.wordlist)
-        self.stack = []
-        self.SEM = []
+        self.stack = []  # 语法栈
+        self.SEM = []  # 语义栈
         self.QT = []
-        # self.currentword1 = ''  # 暂存符号
-        # self.currentword2 = ''
         self.currentwordlist = []
-        self.currenword = ''
+        self.currentword = ''
 
     def is_i(self, word):  # 标识符
         if (word in self.iT) or (word in self.CT):

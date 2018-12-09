@@ -3,7 +3,7 @@
 # @Author: Rilzob
 # @Time: 2018/12/1 上午8:48
 
-from GrammerticalAnalysis2 import LLAnalysis
+from Exercise.GrammerticalAnalysis2 import LLAnalysis
 
 
 class LLSemanticAnalysis(LLAnalysis):
