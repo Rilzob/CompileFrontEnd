@@ -3,15 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="ca56ce5c-b2a6-42f9-9055-465e3315693d" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrammerticalAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/GrammerticalAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/GrammerticalAnalysis2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/GrammerticalAnalysis2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LexicalAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/LexicalAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/LexicalAnalysis2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/LexicalAnalysis2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SemanticsAnalysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/SemanticsAnalysis.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SemanticsAnalysis2.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/SemanticsAnalysis2.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourceCode.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/SourceCode.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SourceCode1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/SourceCode1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise/SourceCode1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/SourceCode1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Exercise/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Exercise/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment/Parser.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment/Parser.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment/main.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -23,11 +18,11 @@
     <SUITE FILE_PATH="coverage/CompileFrontEnd$GrammerticalAnalysis2.coverage" NAME="GrammerticalAnalysis2 Coverage Results" MODIFIED="1542542993850" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CompileFrontEnd$Lexer.coverage" NAME="Lexer Coverage Results" MODIFIED="1542517257282" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CompileFrontEnd$LexicalAnalysis2.coverage" NAME="LexicalAnalysis2 Coverage Results" MODIFIED="1542516628837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CompileFrontEnd$main.coverage" NAME="main Coverage Results" MODIFIED="1544095236645" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/CompileFrontEnd$main.coverage" NAME="main Coverage Results" MODIFIED="1544405318957" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CompileFrontEnd$LexicalAnalysis.coverage" NAME="LexicalAnalysis Coverage Results" MODIFIED="1542530685196" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CompileFrontEnd$GrammerticalAnalysis.coverage" NAME="GrammerticalAnalysis Coverage Results" MODIFIED="1542541467279" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/CompileFrontEnd$LexicalAnalysis3.coverage" NAME="LexicalAnalysis3 Coverage Results" MODIFIED="1542365663600" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/CompileFrontEnd$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1544324064114" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Experiment" />
+    <SUITE FILE_PATH="coverage/CompileFrontEnd$main__1_.coverage" NAME="main (1) Coverage Results" MODIFIED="1544345023963" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Experiment" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="986668078">
@@ -48,27 +43,27 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="32" />
-          <entry key="txt" value="10" />
+          <entry key="py" value="35" />
+          <entry key="txt" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="PLAIN_TEXT" value="10" />
-          <entry key="Python" value="32" />
+          <entry key="PLAIN_TEXT" value="14" />
+          <entry key="Python" value="35" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="28" />
-          <entry key="py" value="17793" />
-          <entry key="txt" value="911" />
+          <entry key="py" value="19929" />
+          <entry key="txt" value="1269" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="939" />
-          <entry key="Python" value="17793" />
+          <entry key="PLAIN_TEXT" value="1297" />
+          <entry key="Python" value="19929" />
         </counts>
       </usages-collector>
     </session>
@@ -78,10 +73,31 @@
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Exercise/SourceCode1.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment/Lexer.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="99">
-                  <caret line="193" column="38" lean-forward="true" selection-start-line="193" selection-start-column="38" selection-end-line="193" selection-end-column="38" />
+                <state relative-caret-position="4828">
+                  <caret line="204" column="14" lean-forward="true" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/Exercise/GrammerticalAnalysis2.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="2476">
+                  <caret line="110" column="13" lean-forward="true" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
+                  <folding>
+                    <marker date="1544319534704" expanded="true" signature="443:449" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -89,8 +105,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment/main.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="327">
-                  <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+                <state relative-caret-position="251">
+                  <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
                   <folding>
                     <element signature="e#64#100#0" expanded="true" />
                   </folding>
@@ -98,20 +114,47 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Exercise/main.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="187">
+                  <caret line="15" column="83" selection-start-line="15" selection-start-column="83" selection-end-line="15" selection-end-column="83" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment/Parser.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="549">
-                  <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
+                <state relative-caret-position="992">
+                  <caret line="112" selection-start-line="112" selection-end-line="112" />
                   <folding>
                     <element signature="e#63#97#0" expanded="true" />
-                    <marker date="1544335512067" expanded="true" signature="574:700" ph="..." />
-                    <marker date="1544335512067" expanded="true" signature="1492:1501" ph="..." />
-                    <marker date="1544335512067" expanded="true" signature="1492:1810" ph="..." />
-                    <marker date="1544335512067" expanded="true" signature="1826:2040" ph="..." />
-                    <marker date="1544335512067" expanded="true" signature="2070:4328" ph="..." />
-                    <marker date="1544335512067" expanded="true" signature="4794:4799" ph="..." />
+                    <marker date="1544344980432" expanded="true" signature="574:676" ph="..." />
+                    <marker date="1544344980432" expanded="true" signature="1576:1585" ph="..." />
+                    <marker date="1544344980432" expanded="true" signature="1576:1904" ph="..." />
+                    <marker date="1544344980432" expanded="true" signature="1920:2139" ph="..." />
+                    <marker date="1544344980432" expanded="true" signature="2169:4474" ph="..." />
+                    <marker date="1544344980432" expanded="true" signature="10465:10984" ph="..." />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Experiment/Test2.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="50">
+                  <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Exercise/SourceCode.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="175">
+                  <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
                 </state>
               </provider>
             </entry>
@@ -119,8 +162,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment/Test1.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="50">
-                  <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
+                <state>
+                  <caret selection-end-line="1" selection-end-column="10" />
                 </state>
               </provider>
             </entry>
@@ -129,20 +172,29 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment/Grammer1.0.txt">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="250">
-                  <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+                <state relative-caret-position="220">
+                  <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/Experiment/Grammer2.0.txt">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="352">
+                  <caret line="28" column="86" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/Exercise/GrammerticalAnalysis.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-1160">
-                  <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+                <state relative-caret-position="1848">
+                  <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
                   <folding>
                     <marker date="1544319534696" expanded="true" signature="174:281" ph="..." />
                   </folding>
@@ -163,18 +215,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>result</find>
-      <find>solve_</find>
-      <find>string</find>
-      <find>char</find>
-      <find>PT</find>
-      <find>ST.append</find>
-      <find>solve</find>
-      <find>return False</find>
-      <find>x</find>
-      <find>return -1</find>
-      <find>state_now</find>
-      <find>8</find>
       <find>''</find>
       <find>add</find>
       <find>print('Lexical error:' + msg)</find>
@@ -185,14 +225,26 @@
       <find>str(</find>
       <find>next(worditer)</find>
       <find>currentstr=''</find>
-      <find>Error1</find>
       <find>ST</find>
       <find>self.ST.a</find>
       <find>wordlist</find>
       <find>op += cur</find>
       <find>('+' or '-')</find>
       <find>worditer</find>
+      <find>Error8</find>
+      <find>12</find>
+      <find>18</find>
+      <find>10</find>
+      <find>16</find>
+      <find>Error1</find>
+      <find>7</find>
+      <find>Sentence</find>
+      <find>30</find>
+      <find>Error7</find>
+      <find>Error10</find>
+      <find>_if</find>
       <find>KT</find>
+      <find>sentece</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -224,12 +276,15 @@
         <option value="$PROJECT_DIR$/SemanticsAnalysis.py" />
         <option value="$PROJECT_DIR$/SourceCode1.txt" />
         <option value="$PROJECT_DIR$/Exercise/GrammerticalAnalysis.py" />
-        <option value="$PROJECT_DIR$/Exercise/main.py" />
         <option value="$PROJECT_DIR$/Experiment/Lexer.py" />
-        <option value="$PROJECT_DIR$/Experiment/Grammer1.0.txt" />
         <option value="$PROJECT_DIR$/Experiment/Test1.txt" />
+        <option value="$PROJECT_DIR$/Experiment/Grammer1.0.txt" />
+        <option value="$PROJECT_DIR$/Experiment/Grammer2.0.txt" />
         <option value="$PROJECT_DIR$/Experiment/main.py" />
+        <option value="$PROJECT_DIR$/Experiment/Test2.txt" />
         <option value="$PROJECT_DIR$/Experiment/Parser.py" />
+        <option value="$PROJECT_DIR$/Exercise/SourceCode1.txt" />
+        <option value="$PROJECT_DIR$/Exercise/main.py" />
       </list>
     </option>
   </component>
@@ -239,11 +294,10 @@
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="223" />
-    <option name="y" value="354" />
-    <option name="width" value="1920" />
-    <option name="height" value="999" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1280" />
+    <option name="height" value="717" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -307,7 +361,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.main (1)">
+  <component name="RunManager" selected="Python.main">
     <configuration name="GrammerticalAnalysis" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="CompileFrontEnd" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -427,8 +481,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.main" />
+        <item itemvalue="Python.main (1)" />
         <item itemvalue="Python.GrammerticalAnalysis2" />
         <item itemvalue="Python.GrammerticalAnalysis" />
         <item itemvalue="Python.LexicalAnalysis" />
@@ -449,16 +503,16 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1920" height="999" extended-state="6" />
+    <frame x="0" y="23" width="1280" height="717" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.07188498" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1898223" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22171946" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.43822077" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.22093023" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3255814" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -467,7 +521,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Concurrent Activities Diagram" order="11" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.31108597" />
+      <window_info anchor="bottom" id="Terminal" order="12" weight="0.11312217" />
       <window_info anchor="bottom" id="Python Console" order="13" weight="0.3294893" />
       <window_info anchor="right" id="Commander" order="0" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -475,30 +529,6 @@
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
     </layout>
-    <layout-to-restore>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22440088" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.20475113" />
-      <window_info anchor="bottom" id="Debug" order="3" visible="true" weight="0.45135745" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
-      <window_info anchor="bottom" id="Concurrent Activities Diagram" order="11" weight="0.32786885" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.16306156" />
-      <window_info anchor="bottom" id="Python Console" order="13" />
-      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" />
-      <window_info anchor="right" id="Database" order="4" />
-    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -513,6 +543,21 @@
           <url>file://$PROJECT_DIR$/Exercise/main.py</url>
           <line>17</line>
           <option name="timeStamp" value="79" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Experiment/Parser.py</url>
+          <line>348</line>
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Experiment/Parser.py</url>
+          <line>186</line>
+          <option name="timeStamp" value="89" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Experiment/Parser.py</url>
+          <line>74</line>
+          <option name="timeStamp" value="91" />
         </line-breakpoint>
       </breakpoints>
       <default-breakpoints>
@@ -551,52 +596,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Exercise/SemanticsAnalysis.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="53" column="23" selection-start-line="53" selection-start-column="23" selection-end-line="53" selection-end-column="23" />
-          <folding>
-            <element signature="e#63#103#0" expanded="true" />
-            <marker date="1544319534714" expanded="true" signature="158:159" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Exercise/SemanticsAnalysis2.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2745">
           <caret line="8" column="8" lean-forward="true" selection-start-line="8" selection-start-column="8" selection-end-line="8" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Exercise/GrammerticalAnalysis2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" selection-start-line="6" selection-end-line="6" selection-end-column="43" />
-          <folding>
-            <marker date="1544319534704" expanded="true" signature="443:449" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Exercise/SourceCode1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Exercise/SourceCode.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="14" lean-forward="true" selection-start-line="3" selection-start-column="14" selection-end-line="3" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Exercise/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="15" column="56" selection-start-line="15" selection-start-column="56" selection-end-line="15" selection-end-column="56" />
         </state>
       </provider>
     </entry>
@@ -617,59 +620,114 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Exercise/GrammerticalAnalysis.py">
+    <entry file="file://$PROJECT_DIR$/Experiment/Grammer1.0.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1160">
-          <caret line="24" column="25" lean-forward="true" selection-start-line="24" selection-start-column="25" selection-end-line="24" selection-end-column="25" />
+        <state relative-caret-position="220">
+          <caret line="17" column="25" lean-forward="true" selection-start-line="17" selection-start-column="25" selection-end-line="17" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exercise/SemanticsAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="947">
+          <caret line="102" column="18" lean-forward="true" selection-start-line="102" selection-start-column="18" selection-end-line="102" selection-end-column="18" />
           <folding>
-            <marker date="1544319534696" expanded="true" signature="174:281" ph="..." />
+            <marker date="1544319534714" expanded="true" signature="158:159" ph="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiment/Test1.txt">
+    <entry file="file://$PROJECT_DIR$/Experiment/Test2.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="50">
           <caret line="2" column="10" lean-forward="true" selection-start-line="2" selection-start-column="10" selection-end-line="2" selection-end-column="10" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Experiment/Test1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret selection-end-line="1" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiment/Lexer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="99">
-          <caret line="193" column="38" lean-forward="true" selection-start-line="193" selection-start-column="38" selection-end-line="193" selection-end-column="38" />
+        <state relative-caret-position="4828">
+          <caret line="204" column="14" lean-forward="true" selection-start-line="204" selection-start-column="14" selection-end-line="204" selection-end-column="14" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Experiment/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="15" column="5" lean-forward="true" selection-start-line="15" selection-start-column="5" selection-end-line="15" selection-end-column="5" />
+        <state relative-caret-position="251">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
           <folding>
             <element signature="e#64#100#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiment/Grammer1.0.txt">
+    <entry file="file://$PROJECT_DIR$/Experiment/Parser.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="250">
-          <caret line="10" column="4" lean-forward="true" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+        <state relative-caret-position="992">
+          <caret line="112" selection-start-line="112" selection-end-line="112" />
+          <folding>
+            <element signature="e#63#97#0" expanded="true" />
+            <marker date="1544344980432" expanded="true" signature="574:676" ph="..." />
+            <marker date="1544344980432" expanded="true" signature="1576:1585" ph="..." />
+            <marker date="1544344980432" expanded="true" signature="1576:1904" ph="..." />
+            <marker date="1544344980432" expanded="true" signature="1920:2139" ph="..." />
+            <marker date="1544344980432" expanded="true" signature="2169:4474" ph="..." />
+            <marker date="1544344980432" expanded="true" signature="10465:10984" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiment/Parser.py">
+    <entry file="file://$PROJECT_DIR$/Exercise/SourceCode.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="178" column="32" selection-start-line="178" selection-start-column="32" selection-end-line="178" selection-end-column="32" />
+        <state relative-caret-position="175">
+          <caret line="7" column="13" lean-forward="true" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exercise/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="15" column="83" selection-start-line="15" selection-start-column="83" selection-end-line="15" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exercise/SourceCode1.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="7" lean-forward="true" selection-start-column="7" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exercise/GrammerticalAnalysis2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2476">
+          <caret line="110" column="13" lean-forward="true" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
           <folding>
-            <element signature="e#63#97#0" expanded="true" />
-            <marker date="1544335512067" expanded="true" signature="574:700" ph="..." />
-            <marker date="1544335512067" expanded="true" signature="1492:1501" ph="..." />
-            <marker date="1544335512067" expanded="true" signature="1492:1810" ph="..." />
-            <marker date="1544335512067" expanded="true" signature="1826:2040" ph="..." />
-            <marker date="1544335512067" expanded="true" signature="2070:4328" ph="..." />
-            <marker date="1544335512067" expanded="true" signature="4794:4799" ph="..." />
+            <marker date="1544319534704" expanded="true" signature="443:449" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiment/Grammer2.0.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="28" column="86" selection-start-line="28" selection-start-column="86" selection-end-line="28" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Exercise/GrammerticalAnalysis.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1848">
+          <caret line="78" column="13" lean-forward="true" selection-start-line="78" selection-start-column="13" selection-end-line="78" selection-end-column="13" />
+          <folding>
+            <marker date="1544319534696" expanded="true" signature="174:281" ph="..." />
           </folding>
         </state>
       </provider>

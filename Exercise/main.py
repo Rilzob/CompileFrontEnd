@@ -13,7 +13,7 @@ if __name__ == '__main__':
     Grammer2 = LLAnalysis()
     LLSA = LLSemanticAnalysis()
     SA = SemanticAnalysis()
-    sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/SourceCode1.txt')
+    sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Exercise/SourceCode1.txt')
     Grammer1.lexer_scanner(sourcecode)
     Grammer1.grammer_parse()
     Grammer2.lexer_scanner(sourcecode)

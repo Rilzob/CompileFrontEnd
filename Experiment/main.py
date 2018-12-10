@@ -18,4 +18,5 @@ if __name__ == '__main__':
     #     if opt == '-p':
     #         Parser = Parser()
     Parser = Parser()
+    print(Parser.wordlist)
     Parser._main()

@@ -1,0 +1,33 @@
+notice: 首字母大写的均为非终结符，剩下的为终结符，id代表标识符
+
+'''
+声明语句
+'''
+Statement -> Type id [ = Constant ]
+Constant -> num | string
+Type -> int | float | char
+
+'''
+赋值语句
+'''
+Assignment -> id "=" Expression
+
+'''
+表达式
+'''
+算术表达式：使用实验中设计的算术表达式文法
+条件表达式：Condition -> Expression condition Expression
+
+'''
+语句
+'''
+Sentence -> type Statement ";"| id Assignment ";" | Expression ";"
+
+'''
+控制语句
+'''
+Control --> if IfElseControl | while WhileControl | for ForControl
+IfElseControl --> if Expression "{" Sentence "}" [ else "{" Sentence "}" ]  # 不允许{}里为空
+WhileControl --> while Expression "{" Sentence "}"
+ForControl --> for "(" Assignment ";" Expression ";" Expression ")" "{" Sentence "}"
+# 不允许在for循环中声明变量,且其中的Expression不可以被省略
