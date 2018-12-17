@@ -15,8 +15,9 @@ Assignment -> id "=" Expression
 '''
 表达式
 '''
-算术表达式：使用实验中设计的算术表达式文法
+算术表达式：Expression使用实验中设计的算术表达式文法
 条件表达式：Condition -> Expression condition Expression
+condition = ['<', '>', '|', '&', '<=', '>=']
 
 '''
 语句

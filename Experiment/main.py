@@ -20,3 +20,4 @@ if __name__ == '__main__':
     Parser = Parser()
     print(Parser.wordlist)
     Parser._main()
+    print(Parser.QT)

@@ -12,11 +12,22 @@ import sys
 class Parser(Lexer):  # 递归下降分析法
     def __init__(self):
         super().__init__()
-        sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Experiment/Test2.txt')
+        sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Experiment/Test.txt')
         # sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Exercise/SourceCode.txt')
         self.lexer_scanner(sourcecode)
         self.worditer = iter(self.wordlist)
         self.word = next(self.worditer)
+        self.SEM = []  # 语义栈
+        self.SYN = []  # 语法栈
+        self.result = []  # 暂存表达式结果
+        self.QT = []
+        self.keyword = '_'  # 暂存keyword的值
+        self.id = '_'  # 暂存id的值
+        self.constant = '_'  # 暂存constant的值
+        self.currentwordlist = []
+        self.currentword = ''
+        self.i = 1
+        self.operator = ''
 
     def is_id(self):
         if self.word in self.iT:
@@ -28,24 +39,13 @@ class Parser(Lexer):  # 递归下降分析法
         if not self._type():
             return False
         if self.is_id():
+            self.id = self.word
             self.word = next(self.worditer)
             if self.word == '=':
                 self.word = next(self.worditer)
                 if not self._constant():
                     return False
-                # if self.word == ';':
-                #     self.word = next(self.worditer)
-                #     return True
-                # else:
-                #     print("Error3")
-                #     return False
                 return True
-            # elif self.word == ';':
-            #     self.word = next(self.worditer)
-            #     return True
-            # else:
-            #     print("Error2")
-            #     return False
             else:
                 return True
         else:
@@ -54,9 +54,11 @@ class Parser(Lexer):  # 递归下降分析法
 
     def _constant(self):
         if self.word in self.CT:  # 判断是否是num
+            self.constant = self.word
             self.word = next(self.worditer)
             return True
         elif self.word in self.cT or self.word in self.sT:  # 判断是否是string
+            self.constant = self.word
             self.word = next(self.worditer)
             return True
         else:
@@ -65,6 +67,7 @@ class Parser(Lexer):  # 递归下降分析法
 
     def _type(self):
         if self.word == 'int' or self.word == 'float' or self.word == 'char':
+            # self.type = self.word
             self.word = next(self.worditer)
             return True
         else:
@@ -73,17 +76,17 @@ class Parser(Lexer):  # 递归下降分析法
 
     def _assignment(self):  # 赋值语句
         if self.is_id():
+            self.id = self.word
             self.word = next(self.worditer)
             if self.word == '=':
                 self.word = next(self.worditer)
+                # if self.is_id():
+                #     self.result.append(str(self.word))
+                #     self.word = next(self.worditer)
                 if not self._expression():
                     return False
-                # if self.word == ';':
-                #     self.word = next(self.worditer)
-                #     return True
-                # else:
-                #     print("Error8")
-                #     return False
+                self.QT.append('(' + '=' + ',' + str(self.SEM.pop()) + ',' + '_' + ',' + str(self.id) + ')')
+                self.id = '_'  # 重新初始化
                 return True
             else:
                 print("Error7")
@@ -100,6 +103,7 @@ class Parser(Lexer):  # 递归下降分析法
 
     def judge_F(self):
         if self.is_i(self.word):
+            self.SYN.append('PUSH(' + str(self.word) + ')')
             self.word = next(self.worditer)
             return True
         elif self.word == '(':
@@ -120,8 +124,14 @@ class Parser(Lexer):  # 递归下降分析法
             while True:
                 try:
                     if self.word in ['*', '/']:
+                        self.currentwordlist.append(self.word)
                         self.word = next(self.worditer)
                         if self.judge_F():
+                            self.currentword = self.currentwordlist.pop()
+                            if self.currentword == '*':
+                                self.SYN.append('GEQ(*)')
+                            else:
+                                self.SYN.append('GEQ(/)')
                             continue
                         else:
                             return False
@@ -137,8 +147,14 @@ class Parser(Lexer):  # 递归下降分析法
             while True:
                 try:
                     if self.word in ['+', '-']:
+                        self.currentwordlist.append(self.word)
                         self.word = next(self.worditer)
                         if self.judge_T():
+                            self.currentword = self.currentwordlist.pop()
+                            if self.currentword == '+':
+                                self.SYN.append('GEQ(+)')
+                            else:
+                                self.SYN.append('GEQ(-)')
                             continue
                         else:
                             return False
@@ -152,14 +168,45 @@ class Parser(Lexer):  # 递归下降分析法
     def _expression(self):
         if not self.judge_E():
             return False
-        # elif self.word == ';':
-        #     print("符合算术表达式文法")
-        #     self.word = next(self.worditer)
-        #     return True
-        # else:
-        #     return False
-        # self.word = next(self.worditer)
-        return True
+        else:
+            for currentstr in self.SYN:
+                if currentstr.startswith('PUSH'):
+                    self.SEM.append(currentstr.lstrip('PUSH(').rstrip(')'))
+            for currentstr in self.SYN:
+                if currentstr.startswith('GEQ'):
+                    char1 = self.SEM.pop()
+                    char2 = self.SEM.pop()
+                    self.SEM.append('t' + str(self.i))
+                    # self.result.append('t' + str(self.i))
+                    self.QT.append('(' + currentstr.lstrip('GEQ(').rstrip(')') + ',' + char2 + ','
+                                   + char1 + ',' + 't' + str(self.i) + ')')
+                    self.i += 1
+            self.SYN = []
+            self.currentwordlist = []
+            self.currentword = ''
+            return True
+
+    def _condition(self):
+        if self.is_id():
+            self.SEM.append(str(self.word))
+            self.word = next(self.worditer)
+        elif not self._expression():
+            return False
+        if self.word in ['<', '>', '|', '&', '<=', '>=']:
+            self.operator = self.word
+            self.word = next(self.worditer)
+            if self.is_id():
+                self.SEM.append(str(self.word))
+                self.word = next(self.worditer)
+            elif not self._expression():
+                return False
+            self.QT.append('(' + str(self.operator) + ',' + str(self.SEM.pop()) + ',' + str(self.SEM.pop()) + ',' + 't'
+                           + str(self.i) + ')')
+            self.i += 1
+            self.operator = ''
+            return True
+        else:
+            return True
 
     def is_type(self):
         if self.word == 'int' or self.word == 'float' or self.word == 'char':
@@ -172,6 +219,9 @@ class Parser(Lexer):  # 递归下降分析法
             if not self._statement():
                 return False
             if self.word == ';':
+                self.QT.append('(' + '=' + ',' + str(self.constant) + ',' + '_' + ',' + str(self.id) + ')')
+                self.constant = '_'  # 重新初始化
+                self.id = '_'
                 self.word = next(self.worditer)
                 return True
             else:
@@ -200,21 +250,30 @@ class Parser(Lexer):  # 递归下降分析法
     def _ifelsecontrol(self):
         if self.word == 'if':
             self.word = next(self.worditer)
-            if not self._expression():
+            if not self._condition():
                 return False
+            self.QT.append('(' + 'if' + ',' + 't' + str(self.i - 1) + ',' + '_' + ',' + '_' + ')')
             if self.word == '{':
                 self.word = next(self.worditer)
-                if not self._sentence():
-                    return False
+                while True:
+                    if self.word == '}':
+                        break
+                    elif not self._sentence():
+                        return False
                 if self.word == '}':
                     self.word = next(self.worditer)
                     if self.word == 'else':
+                        self.QT.append('(' + 'el' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
                         self.word = next(self.worditer)
                         if self.word == '{':
                             self.word = next(self.worditer)
-                            if not self._sentence():
-                                return False
+                            while True:
+                                if self.word == '}':
+                                    break
+                                elif not self._sentence():
+                                    return False
                             if self.word == '}':
+                                self.QT.append('(' + 'ie' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
                                 self.word = next(self.worditer)
                                 return True
                             else:
@@ -224,6 +283,7 @@ class Parser(Lexer):  # 递归下降分析法
                             print("Error19")
                             return False
                     else:
+                        self.QT.append('(' + 'ie' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
                         return True
                 else:
                     print("Error12")
@@ -235,28 +295,9 @@ class Parser(Lexer):  # 递归下降分析法
             print("Error14")
             return False
 
-    def _elsecontrol(self):
-        if self.word == 'else':
-            self.word = next(self.worditer)
-            if self.word == '{':
-                self.word = next(self.worditer)
-                if not self._sentence():
-                    return False
-                if self.word == '}':
-                    self.word = next(self.worditer)
-                    return True
-                else:
-                    print("Error18")
-                    return False
-            else:
-                print("Error19")
-                return False
-        else:
-            self.word = next(self.worditer)
-            return True
-
     def _whilecontrol(self):
         if self.word == 'while':
+            self.QT.append('(' + 'wh' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
             self.word = next(self.worditer)
             if not self._expression():
                 return False
@@ -266,6 +307,7 @@ class Parser(Lexer):  # 递归下降分析法
                     return False
                 if self.word == '}':
                     self.word = next(self.worditer)
+                    self.QT.append('(' + 'we' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
                     return True
                 else:
                     print("Error20")
@@ -360,4 +402,4 @@ class Parser(Lexer):  # 递归下降分析法
                     return False
             except StopIteration:
                 print("符合语法")
-                sys.exit(0)
+                # sys.exit(0)

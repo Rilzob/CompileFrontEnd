@@ -1,0 +1,9 @@
+c = (a + b);
+if a <= d{
+   c = a;
+   a = d;
+   d = c;
+} else {
+   a = b;
+   c = d;
+}
