@@ -12,7 +12,7 @@ import sys
 class Parser(Lexer):  # 递归下降分析法
     def __init__(self):
         super().__init__()
-        sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Experiment/Test.txt')
+        sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Experiment/Test2.txt')
         # sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Exercise/SourceCode.txt')
         self.lexer_scanner(sourcecode)
         self.worditer = iter(self.wordlist)
@@ -21,13 +21,18 @@ class Parser(Lexer):  # 递归下降分析法
         self.SYN = []  # 语法栈
         self.result = []  # 暂存表达式结果
         self.QT = []
-        self.keyword = '_'  # 暂存keyword的值
+        # self.keyword = '_'  # 暂存keyword的值
         self.id = '_'  # 暂存id的值
         self.constant = '_'  # 暂存constant的值
         self.currentwordlist = []
         self.currentword = ''
         self.i = 1
         self.operator = ''
+        self.vartype = ''  # 暂存声明语句中标识符的type
+        self.varname = ''  # 暂存声明语句中标识符的name
+        self.varvalue = ''  # 暂存声明语句中标识符的值
+        self.record = []  # 记录符号的信息
+        self.SYNBL = []  # 符号表总表
 
     def is_id(self):
         if self.word in self.iT:
@@ -35,19 +40,37 @@ class Parser(Lexer):  # 递归下降分析法
         else:
             return False
 
+    def varinit(self):
+        self.varname = ''
+        self.vartype = ''
+        self.varvalue = ''
+        self.record = []
+
+    def id_in_SYNBL(self, name):
+        for record in self.SYNBL:
+            if name == record[0]:
+                return True
+        return False
+
     def _statement(self):  # 声明语句
         if not self._type():
             return False
         if self.is_id():
             self.id = self.word
+            self.varname = self.word
             self.word = next(self.worditer)
             if self.word == '=':
                 self.word = next(self.worditer)
                 if not self._constant():
                     return False
-                return True
-            else:
-                return True
+                # self.varvalue = self.word
+            self.record.append(self.varname)
+            self.record.append(self.vartype)
+            self.record.append(self.varvalue)
+            self.SYNBL.append(self.record)
+            # 将该变量添加到符号表中
+            self.varinit()
+            return True
         else:
             print("Error1")
             return False
@@ -55,10 +78,12 @@ class Parser(Lexer):  # 递归下降分析法
     def _constant(self):
         if self.word in self.CT:  # 判断是否是num
             self.constant = self.word
+            self.varvalue = self.word
             self.word = next(self.worditer)
             return True
         elif self.word in self.cT or self.word in self.sT:  # 判断是否是string
             self.constant = self.word
+            self.varvalue = self.word
             self.word = next(self.worditer)
             return True
         else:
@@ -67,7 +92,7 @@ class Parser(Lexer):  # 递归下降分析法
 
     def _type(self):
         if self.word == 'int' or self.word == 'float' or self.word == 'char':
-            # self.type = self.word
+            self.vartype = self.word
             self.word = next(self.worditer)
             return True
         else:
@@ -77,32 +102,37 @@ class Parser(Lexer):  # 递归下降分析法
     def _assignment(self):  # 赋值语句
         if self.is_id():
             self.id = self.word
-            self.word = next(self.worditer)
-            if self.word == '=':
+            if self.id_in_SYNBL(self.id):
                 self.word = next(self.worditer)
-                # if self.is_id():
-                #     self.result.append(str(self.word))
-                #     self.word = next(self.worditer)
-                if not self._expression():
+                if self.word == '=':
+                    self.word = next(self.worditer)
+                    if not self._expression():
+                        return False
+                    self.QT.append('(' + '=' + ',' + str(self.SEM.pop()) + ',' + '_' + ',' + str(self.id) + ')')
+                    self.id = '_'  # 重新初始化
+                    return True
+                else:
+                    print("Error7")
                     return False
-                self.QT.append('(' + '=' + ',' + str(self.SEM.pop()) + ',' + '_' + ',' + str(self.id) + ')')
-                self.id = '_'  # 重新初始化
-                return True
             else:
-                print("Error7")
+                print("符号表没有该变量，该变量没有声明")
                 return False
         else:
             print("Error6")
             return False
 
-    def is_i(self, word):  # 标识符
-        if (word in self.iT) or (word in self.CT):
-            return True
-        else:
-            return False
+    # def is_i(self, word):  # 标识符
+    #     if (word in self.iT) or (word in self.CT):
+    #         return True
+    #     else:
+    #         return False
 
     def judge_F(self):
-        if self.is_i(self.word):
+        if self.is_id() or (self.word in self.CT):
+            if self.is_id():
+                if not self.id_in_SYNBL(self.word):
+                    print("不在符号表中，变量%s未声明" % str(self.word))
+                    return False
             self.SYN.append('PUSH(' + str(self.word) + ')')
             self.word = next(self.worditer)
             return True
@@ -172,8 +202,7 @@ class Parser(Lexer):  # 递归下降分析法
             for currentstr in self.SYN:
                 if currentstr.startswith('PUSH'):
                     self.SEM.append(currentstr.lstrip('PUSH(').rstrip(')'))
-            for currentstr in self.SYN:
-                if currentstr.startswith('GEQ'):
+                elif currentstr.startswith('GEQ'):
                     char1 = self.SEM.pop()
                     char2 = self.SEM.pop()
                     self.SEM.append('t' + str(self.i))
@@ -181,7 +210,7 @@ class Parser(Lexer):  # 递归下降分析法
                     self.QT.append('(' + currentstr.lstrip('GEQ(').rstrip(')') + ',' + char2 + ','
                                    + char1 + ',' + 't' + str(self.i) + ')')
                     self.i += 1
-            self.SYN = []
+            self.SYN = []  # 重新初始化
             self.currentwordlist = []
             self.currentword = ''
             return True

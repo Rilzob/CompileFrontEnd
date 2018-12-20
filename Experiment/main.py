@@ -6,6 +6,7 @@
 from Experiment.Parser import Parser
 import getopt
 import sys
+from Experiment.Optimize import dagoptimize
 
 if __name__ == '__main__':
     # try:
@@ -21,3 +22,5 @@ if __name__ == '__main__':
     print(Parser.wordlist)
     Parser._main()
     print(Parser.QT)
+    print(Parser.SYNBL)
+    dagoptimize(Parser.QT)

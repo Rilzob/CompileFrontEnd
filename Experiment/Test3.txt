@@ -1,0 +1,7 @@
+int B;
+int A;
+int r;
+int R;
+B=5;
+A=2*3.14/(R+r);
+B=2*3.14/(R+r)*(R-r);

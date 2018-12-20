@@ -1,5 +1,7 @@
 int a = 1;
 int c;
+int b = 2;
+int d = 1;
 char x = 'a';
 c = a + b;
 if a <= d{
