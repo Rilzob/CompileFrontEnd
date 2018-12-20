@@ -6,7 +6,7 @@
 from Experiment.Parser import Parser
 import getopt
 import sys
-from Experiment.Optimize import dagoptimize
+from Experiment.Optimize import basicblock
 
 if __name__ == '__main__':
     # try:
@@ -21,6 +21,6 @@ if __name__ == '__main__':
     Parser = Parser()
     print(Parser.wordlist)
     Parser._main()
-    print(Parser.QT)
-    print(Parser.SYNBL)
-    dagoptimize(Parser.QT)
+    print('四元式:', Parser.QT)
+    print('符号表:', Parser.SYNBL)
+    basicblock(Parser.QT)

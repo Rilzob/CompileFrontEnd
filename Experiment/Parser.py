@@ -12,7 +12,7 @@ import sys
 class Parser(Lexer):  # 递归下降分析法
     def __init__(self):
         super().__init__()
-        sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Experiment/Test2.txt')
+        sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Experiment/Test3.txt')
         # sourcecode = load_file('/Users/rilzob/PycharmProjects/CompileFrontEnd/Exercise/SourceCode.txt')
         self.lexer_scanner(sourcecode)
         self.worditer = iter(self.wordlist)
@@ -108,7 +108,13 @@ class Parser(Lexer):  # 递归下降分析法
                     self.word = next(self.worditer)
                     if not self._expression():
                         return False
-                    self.QT.append('(' + '=' + ',' + str(self.SEM.pop()) + ',' + '_' + ',' + str(self.id) + ')')
+                    # self.QT.append('(' + '=' + ',' + str(self.SEM.pop()) + ',' + '_' + ',' + str(self.id) + ')')
+                    quaternary = []
+                    quaternary.append('=')
+                    quaternary.append(str(self.SEM.pop()))
+                    quaternary.append('_')
+                    quaternary.append(str(self.id))
+                    self.QT.append(quaternary)
                     self.id = '_'  # 重新初始化
                     return True
                 else:
@@ -207,8 +213,15 @@ class Parser(Lexer):  # 递归下降分析法
                     char2 = self.SEM.pop()
                     self.SEM.append('t' + str(self.i))
                     # self.result.append('t' + str(self.i))
-                    self.QT.append('(' + currentstr.lstrip('GEQ(').rstrip(')') + ',' + char2 + ','
-                                   + char1 + ',' + 't' + str(self.i) + ')')
+                    # self.QT.append('(' + currentstr.lstrip('GEQ(').rstrip(')') + ',' + char2 + ','
+                    #                + char1 + ',' + 't' + str(self.i) + ')')
+                    string = 't' + str(self.i)
+                    quaternary = []
+                    quaternary.append(currentstr.lstrip('GEQ(').rstrip(')'))
+                    quaternary.append(char2)
+                    quaternary.append(char1)
+                    quaternary.append(string)
+                    self.QT.append(quaternary)
                     self.i += 1
             self.SYN = []  # 重新初始化
             self.currentwordlist = []
@@ -229,8 +242,15 @@ class Parser(Lexer):  # 递归下降分析法
                 self.word = next(self.worditer)
             elif not self._expression():
                 return False
-            self.QT.append('(' + str(self.operator) + ',' + str(self.SEM.pop()) + ',' + str(self.SEM.pop()) + ',' + 't'
-                           + str(self.i) + ')')
+            # self.QT.append('(' + str(self.operator) + ',' + str(self.SEM.pop()) + ',' + str(self.SEM.pop()) + ',' + 't'
+            #                + str(self.i) + ')')
+            string = 't' + str(self.i)
+            quaternary = []
+            quaternary.append(str(self.operator))
+            quaternary.append(str(self.SEM.pop()))
+            quaternary.append(str(self.SEM.pop()))
+            quaternary.append(string)
+            self.QT.append(quaternary)
             self.i += 1
             self.operator = ''
             return True
@@ -248,7 +268,13 @@ class Parser(Lexer):  # 递归下降分析法
             if not self._statement():
                 return False
             if self.word == ';':
-                self.QT.append('(' + '=' + ',' + str(self.constant) + ',' + '_' + ',' + str(self.id) + ')')
+                # self.QT.append('(' + 'init' + ',' + str(self.constant) + ',' + '_' + ',' + str(self.id) + ')')
+                quaternary = []
+                quaternary.append('init')
+                quaternary.append(str(self.constant))
+                quaternary.append('_')
+                quaternary.append(str(self.id))
+                self.QT.append(quaternary)
                 self.constant = '_'  # 重新初始化
                 self.id = '_'
                 self.word = next(self.worditer)
@@ -281,7 +307,14 @@ class Parser(Lexer):  # 递归下降分析法
             self.word = next(self.worditer)
             if not self._condition():
                 return False
-            self.QT.append('(' + 'if' + ',' + 't' + str(self.i - 1) + ',' + '_' + ',' + '_' + ')')
+            # self.QT.append('(' + 'if' + ',' + 't' + str(self.i - 1) + ',' + '_' + ',' + '_' + ')')
+            string = 't' + str(self.i - 1)
+            quaternary = []
+            quaternary.append('if')
+            quaternary.append(string)
+            quaternary.append('_')
+            quaternary.append('_')
+            self.QT.append(quaternary)
             if self.word == '{':
                 self.word = next(self.worditer)
                 while True:
@@ -292,7 +325,13 @@ class Parser(Lexer):  # 递归下降分析法
                 if self.word == '}':
                     self.word = next(self.worditer)
                     if self.word == 'else':
-                        self.QT.append('(' + 'el' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                        # self.QT.append('(' + 'el' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                        quaternary = []
+                        quaternary.append('el')
+                        quaternary.append('_')
+                        quaternary.append('_')
+                        quaternary.append('_')
+                        self.QT.append(quaternary)
                         self.word = next(self.worditer)
                         if self.word == '{':
                             self.word = next(self.worditer)
@@ -302,7 +341,13 @@ class Parser(Lexer):  # 递归下降分析法
                                 elif not self._sentence():
                                     return False
                             if self.word == '}':
-                                self.QT.append('(' + 'ie' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                                # self.QT.append('(' + 'ie' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                                quaternary = []
+                                quaternary.append('ie')
+                                quaternary.append('_')
+                                quaternary.append('_')
+                                quaternary.append('_')
+                                self.QT.append(quaternary)
                                 self.word = next(self.worditer)
                                 return True
                             else:
@@ -312,7 +357,13 @@ class Parser(Lexer):  # 递归下降分析法
                             print("Error19")
                             return False
                     else:
-                        self.QT.append('(' + 'ie' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                        # self.QT.append('(' + 'ie' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                        quaternary = []
+                        quaternary.append('ie')
+                        quaternary.append('_')
+                        quaternary.append('_')
+                        quaternary.append('_')
+                        self.QT.append(quaternary)
                         return True
                 else:
                     print("Error12")
@@ -326,7 +377,13 @@ class Parser(Lexer):  # 递归下降分析法
 
     def _whilecontrol(self):
         if self.word == 'while':
-            self.QT.append('(' + 'wh' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+            # self.QT.append('(' + 'wh' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+            quaternary = []
+            quaternary.append('wh')
+            quaternary.append('_')
+            quaternary.append('_')
+            quaternary.append('_')
+            self.QT.append(quaternary)
             self.word = next(self.worditer)
             if not self._expression():
                 return False
@@ -336,7 +393,13 @@ class Parser(Lexer):  # 递归下降分析法
                     return False
                 if self.word == '}':
                     self.word = next(self.worditer)
-                    self.QT.append('(' + 'we' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                    # self.QT.append('(' + 'we' + ',' + '_' + ',' + '_' + ',' + '_' + ')')
+                    quaternary = []
+                    quaternary.append('we')
+                    quaternary.append('_')
+                    quaternary.append('_')
+                    quaternary.append('_')
+                    self.QT.append(quaternary)
                     return True
                 else:
                     print("Error20")
